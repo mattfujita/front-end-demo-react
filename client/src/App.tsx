@@ -1,49 +1,12 @@
 import * as React from 'react';
+import BeerList from './Beer';
 import './App.css';
 
 import logo from './logo.svg';
 
-interface Beer {
-  id: number;
-  name: string;
-}
-
-interface AppProps {
-}
-
-interface AppState {
-  beers: Array<Beer>;
-  isLoading: boolean;
-}
-
-class App extends React.Component<AppProps, AppState> {
-
-  constructor(props: AppProps) {
-    super(props);
-
-    this.state = {
-      beers: [],
-      isLoading: false
-    };
-
-  }
-
-  componentDidMount() {
-    this.setState({isLoading: true});
-
-    fetch('http://localhost:8080/good-beers')
-      .then(response => response.json())
-      .then(data => this.setState({beers : data, isLoading : false}));
-
-  }
+class App extends React.Component<{}, any> {
 
   render() {
-
-    const {beers, isLoading} = this.state;
-
-    if (isLoading) {
-      return <p>Loading...</p>
-    }
 
     return (
       <div className="App">
@@ -51,14 +14,7 @@ class App extends React.Component<AppProps, AppState> {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <div>
-          <h2>Beer List</h2>
-          {beers.map((beer: Beer) => 
-            <div key={beer.id}>
-              {beer.name}
-            </div>
-          )}
-        </div>
+        <BeerList />
       </div>
     );
   }

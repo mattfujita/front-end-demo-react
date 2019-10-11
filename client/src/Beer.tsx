@@ -1,4 +1,5 @@
 import * as React from 'react';
+import GiphyImage from 'create-react-app/client/src/GiphyImage';
 
 interface Beer {
     id: number;
@@ -46,7 +47,8 @@ class BeerList extends React.Component<BeerListProps, BeerListState> {
                 <h2>Beer List</h2>
                 {beers.map((beer: Beer) =>
                     <div key={beer.id}>
-                        {beer.name}
+                        {beer.name}<br/>
+                        <GiphyImage name={beer.name} />
                     </div>
                 )}
             </div>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import GiphyImage from 'create-react-app/client/src/GiphyImage';
+import GiphyImage from './GiphyImage';
 
 interface Beer {
     id: number;
